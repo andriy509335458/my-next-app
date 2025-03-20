@@ -17,11 +17,13 @@ export async function connectToDB() {
   // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
   await mongoose.connect(uri, clientOptions);
 
-  await mongoose.connection.db.admin().command({ ping: 1 });
+  const db = mongoose.connection.db;
+
+  await db.admin().command({ ping: 1 });
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  const currentDb = mongoose.connection.db.databaseName;
+  const currentDb = db.databaseName;
   console.log(`The current database is: ${currentDb}`);
-  const collections = await mongoose.connection.db.listCollections().toArray();
+  const collections = await db.listCollections().toArray();
   console.log("Collections:");
   console.log(collections);
 }

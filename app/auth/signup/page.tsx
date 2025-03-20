@@ -5,15 +5,9 @@ import React, { useState } from "react";
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      console.error("Passwords do not match");
-      return;
-    }
 
     // Example: Send sign-up data to an API endpoint
     const response = await fetch("/api/auth/signup", {
@@ -68,22 +62,7 @@ export default function SignUpPage() {
               required
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
