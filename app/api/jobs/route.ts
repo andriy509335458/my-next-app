@@ -1,4 +1,4 @@
-import SampleData from "@/models/SampleData";
+import SampleData from "@/types/SampleData";
 
 export async function GET() {
   const URL = "https://jsonplaceholder.typicode.com/posts";

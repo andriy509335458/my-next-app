@@ -1,6 +1,6 @@
 "use client";
 
-import SampleData from "@/models/SampleData";
+import SampleData from "@/types/SampleData";
 import Card from "@/ui/Card";
 import { useEffect, useState } from "react";
 
@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="m-4">
       {sampleData &&
         sampleData.map((el) => {
           return <Card key={el.id} title={el.title} body={el.body} />;

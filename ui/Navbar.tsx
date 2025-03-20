@@ -6,25 +6,20 @@ import Dropdown from "./Dropdown";
 
 export default function Navbar() {
   return (
-    <div>
+    <div style={{ margin: "20px", width: "fit-content" }}>
       Navbar
       <Dropdown
+        headerText="Links"
         dropdownContent={
-          <div className="flex flex-col absolute ">
+          <div
+            className="flex flex-col absolute"
+            style={{ backgroundColor: "white", padding: "5px" }}
+          >
             <Link href="/">Home</Link>
             <Link href="/jobs"> Jobs </Link>
           </div>
         }
       />
-      {/* <div className="flex justify-around m-4">
-        <Link href="/" className="hover:text-blue-500">
-          Home
-        </Link>
-        <Link href="/jobs" className="hover:text-blue-500">
-          {" "}
-          Jobs{" "}
-        </Link>
-      </div> */}
     </div>
   );
 }
