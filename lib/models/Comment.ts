@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
+import mongoose, { Document, Schema, Model, models } from "mongoose";
 
 export interface IComment extends Document {
   name: string;
@@ -16,9 +16,7 @@ const CommentSchema: Schema<IComment> = new Schema({
   date: { type: Date, required: true },
 });
 
-const SampleComment: Model<IComment> = mongoose.model<IComment>(
-  "Comment",
-  CommentSchema
-);
+const SampleComment: Model<IComment> =
+  models.Comment || mongoose.model<IComment>("Comment", CommentSchema);
 
 export default SampleComment;

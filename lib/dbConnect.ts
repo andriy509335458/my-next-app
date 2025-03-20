@@ -9,8 +9,13 @@ const clientOptions: ConnectOptions = {
 
 export async function connectToDB() {
   // check if the connection to the database is already open
-  if (mongoose.connection.readyState === 1) {
-    console.log("Connection to the database is already open");
+  if (
+    mongoose.connection.readyState === 1 ||
+    mongoose.connection.readyState === 2
+  ) {
+    console.log(
+      "Connection to the database is already open or is being opened"
+    );
     return;
   }
 

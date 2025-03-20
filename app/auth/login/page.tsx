@@ -20,6 +20,7 @@ export default function LoginPage() {
 
     if (response.ok) {
       console.log("Login successful");
+      window.location.reload();
     } else {
       console.error("Login failed");
     }
