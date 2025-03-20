@@ -3,10 +3,14 @@ import bcrypt from "bcrypt";
 import { signJWT } from "@/lib/jwt"; // helper to sign JWT
 import { cookies } from "next/headers";
 import User from "@/lib/models/User";
+import { connectToDB } from "@/lib/dbConnect";
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
-  const user = await User.find({ where: { email } });
+
+  await connectToDB();
+
+  const user = await User.findOne({ email });
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return NextResponse.json(
